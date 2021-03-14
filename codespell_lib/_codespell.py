@@ -416,7 +416,7 @@ def parse_options(args):
 def build_exclude_hashes(filename, exclude_lines):
     with codecs.open(filename, 'r') as f:
         for line in f:
-            exclude_lines.add(line)
+            exclude_lines.add(line.rstrip())
 
 
 def build_ignore_words(filename, ignore_words):
@@ -602,7 +602,7 @@ def parse_file(filename, colors, summary, misspellings, exclude_lines,
             return bad_count
 
     for i, line in enumerate(lines):
-        if line in exclude_lines:
+        if line.rstrip() in exclude_lines:
             continue
 
         fixed_words = set()
