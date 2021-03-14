@@ -250,7 +250,7 @@ def test_exclude_file(tmpdir, capsys):
     """Test exclude file functionality."""
     d = str(tmpdir)
     with open(op.join(d, 'bad.txt'), 'wb') as f:
-        f.write('1 abandonned 1\n2 abandonned 2\n'.encode('utf-8'))
+        f.write('1 abandonned 1\r\n2 abandonned 2\r\n'.encode('utf-8'))
     bad_name = f.name
     assert cs.main(bad_name) == 2
     with open(op.join(d, 'tmp.txt'), 'wb') as f:
